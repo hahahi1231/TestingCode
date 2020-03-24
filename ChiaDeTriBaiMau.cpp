@@ -14,12 +14,12 @@ void in(int *&a, int &n){
 	cout<<"\n noi dung mang:\n";
 	for(int i=0; i<n; i++) cout<<a[i] <<" ";
 }
-
+//Sap xep mang tang dan
 void Merge(int*&a, int L, int R){
 	        int m= (L+R)/2; // chia mang thanh 2 phan
 			int i=L, j=m+1, v=0;  
             int *kq= new int[R-L+1]; // mang ket qua tam chua day tang dan
-            
+            //Thuat toan chia de tri
              while (i<=m && j<=R)
                 if(a[i]<=a[j]) { 
 					kq[v]=a[i];
@@ -43,6 +43,7 @@ void Merge(int*&a, int L, int R){
 					 j++;
 			 }
             		 i=L;  
+				//Sao chep mang *kq sang mang *a
 			 	for(j=0; j<v; j++)  
 			 		a[i++] = kq[j];
         
