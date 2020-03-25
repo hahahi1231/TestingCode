@@ -1,7 +1,5 @@
 #include<bits/stdc++.h>
 using namespace std;
-
-
 //tao mang random
 void sinh(int *&a, int &n){
 	cout<<"\n so phan tu mang can sinh:"; cin>>n;
@@ -16,20 +14,21 @@ void in(int *&a, int &n){
 }
 //Sap xep mang tang dan
 void Merge(int*&a, int L, int R){
+	// L,R la bien trai va bien phai cua mang
 	        int m= (L+R)/2; // chia mang thanh 2 phan
 			int i=L, j=m+1, v=0;  
             int *kq= new int[R-L+1]; // mang ket qua tam chua day tang dan
             //Thuat toan chia de tri
              while (i<=m && j<=R)
-                if(a[i]<=a[j]) { 
+                if(a[i]<=a[j]) { // Neu a[i] < a[j] thi copy phan tu ben trai vao mang tam
 					kq[v]=a[i];
-					i++;
+					i++;// Vi tri phan tu tiep theo cua mang
 					v++;
 				 }  
-				else {
+				else { // Nguoc lai copy phan tu cua mang con ben phai vao mang tam
 				 kq[v] =a[j]; 
 				 v++; 
-				 j++;
+				 j++;// Vi tri phan tu tiep theo cua mang
 				}
 				
              while (i<=m) { 
@@ -52,10 +51,10 @@ void Merge(int*&a, int L, int R){
 void Mergesort(int*&a, int L, int R){
 	if(L<R)
 	{
-		int m=(L+R)/2;
-		Mergesort(a,  L, m);
-		Mergesort(a,  m+1, R);
-		Merge(a, L, R);
+		int m=(L+R)/2; // Giua
+		Mergesort(a,  L, m);	// Goi de quy mang con ben trai
+		Mergesort(a,  m+1, R);	// Goi de quy mang con ben phai
+		Merge(a, L, R);	// Goi ham so sanh hai mang con
 	}
 
 }
